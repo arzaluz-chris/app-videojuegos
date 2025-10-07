@@ -1,0 +1,91 @@
+<div class="auth-container">
+  <div class="auth-card">
+    <h1>Crear Cuenta</h1>
+    <p class="subtitle">Únete a Tienda Juegos</p>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <!-- Nombre -->
+      <div class="form-group">
+        <label for="name">Nombre Completo</label>
+        <input
+          type="text"
+          id="name"
+          formControlName="name"
+          placeholder="Juan Pérez"
+          [class.error]="registerForm.get('name')?.touched && registerForm.get('name')?.invalid"
+        />
+        <span class="error-message" *ngIf="registerForm.get('name')?.touched && registerForm.get('name')?.invalid">
+          {{ getErrorMessage('name') }}
+        </span>
+      </div>
+
+      <!-- Email -->
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          formControlName="email"
+          placeholder="tu@email.com"
+          [class.error]="registerForm.get('email')?.touched && registerForm.get('email')?.invalid"
+        />
+        <span class="error-message" *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.invalid">
+          {{ getErrorMessage('email') }}
+        </span>
+      </div>
+
+      <!-- Password -->
+      <div class="form-group">
+        <label for="password">Contraseña</label>
+        <input
+          type="password"
+          id="password"
+          formControlName="password"
+          placeholder="••••••••"
+          [class.error]="registerForm.get('password')?.touched && registerForm.get('password')?.invalid"
+        />
+        <span class="error-message" *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.invalid">
+          {{ getErrorMessage('password') }}
+        </span>
+      </div>
+
+      <!-- Confirmar Password -->
+      <div class="form-group">
+        <label for="confirmPassword">Confirmar Contraseña</label>
+        <input
+          type="password"
+          id="confirmPassword"
+          formControlName="confirmPassword"
+          placeholder="••••••••"
+          [class.error]="hasPasswordMismatch() || (registerForm.get('confirmPassword')?.touched && registerForm.get('confirmPassword')?.invalid)"
+        />
+        <span class="error-message" *ngIf="registerForm.get('confirmPassword')?.touched && registerForm.get('confirmPassword')?.invalid">
+          {{ getErrorMessage('confirmPassword') }}
+        </span>
+        <span class="error-message" *ngIf="hasPasswordMismatch()">
+          Las contraseñas no coinciden
+        </span>
+      </div>
+
+      <!-- Mensajes de estado -->
+      <div class="alert alert-error" *ngIf="errorMessage">
+        {{ errorMessage }}
+      </div>
+
+      <div class="alert alert-success" *ngIf="successMessage">
+        {{ successMessage }}
+      </div>
+
+      <!-- Botón de submit -->
+      <button type="submit" class="btn btn-primary" [disabled]="isLoading">
+        <span *ngIf="!isLoading">Crear Cuenta</span>
+        <span *ngIf="isLoading">Creando cuenta...</span>
+      </button>
+    </form>
+
+    <!-- Link a login -->
+    <div class="auth-footer">
+      <p>¿Ya tienes cuenta? <a routerLink="/login">Inicia sesión aquí</a></p>
+    </div>
+  </div>
+</div>

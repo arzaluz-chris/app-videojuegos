@@ -1,0 +1,86 @@
+<div class="games-container">
+  <!-- Header -->
+  <div class="games-header">
+    <div class="header-content">
+      <h1>Catálogo de Videojuegos</h1>
+      <p class="subtitle">Descubre los mejores juegos del momento</p>
+    </div>
+    <a
+      *ngIf="isAuthenticated$ | async"
+      routerLink="/games/add"
+      class="btn btn-primary"
+    >
+      <span>+ Agregar Juego</span>
+    </a>
+  </div>
+
+  <!-- Grid de juegos -->
+  <div class="games-grid" *ngIf="games$ | async as games">
+    <div
+      *ngIf="games.length === 0"
+      class="empty-state"
+    >
+      <h2>No hay juegos disponibles</h2>
+      <p>¡Sé el primero en agregar un juego!</p>
+      <a
+        *ngIf="isAuthenticated$ | async"
+        routerLink="/games/add"
+        class="btn btn-primary"
+      >
+        Agregar primer juego
+      </a>
+    </div>
+
+    <div
+      *ngFor="let game of games; trackBy: trackByGameId"
+      class="game-card"
+    >
+      <div class="game-image">
+        <img
+          [src]="game.imageUrl || 'https://via.placeholder.com/400x300?text=No+Image'"
+          [alt]="game.title"
+          loading="lazy"
+        />
+        <div class="rating-badge" [ngClass]="getRatingClass(game.rating)">
+          {{ game.rating || 'N/A' }}
+        </div>
+      </div>
+
+      <div class="game-content">
+        <h3 class="game-title">{{ game.title }}</h3>
+
+        <p class="game-description" *ngIf="game.description">
+          {{ game.description }}
+        </p>
+
+        <!-- Platforms -->
+        <div class="game-platforms" *ngIf="game.platform && game.platform.length > 0">
+          <span
+            *ngFor="let platform of game.platform.slice(0, 3)"
+            class="platform-badge"
+          >
+            {{ platform }}
+          </span>
+        </div>
+
+        <!-- Tags -->
+        <div class="game-tags" *ngIf="game.tags && game.tags.length > 0">
+          <span
+            *ngFor="let tag of game.tags.slice(0, 3)"
+            class="tag-badge"
+          >
+            {{ tag }}
+          </span>
+        </div>
+
+        <!-- Footer: precio y botón -->
+        <div class="game-footer">
+          <span class="game-price">{{ formatPrice(game.price) }}</span>
+          <button class="btn btn-secondary">
+            Ver detalles
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

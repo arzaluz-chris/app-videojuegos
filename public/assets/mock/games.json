@@ -1,0 +1,82 @@
+[
+  {
+    "id": "1",
+    "title": "The Legend of Zelda: Breath of the Wild",
+    "description": "Explora un vasto mundo abierto en esta aventura épica de Nintendo. Resuelve acertijos, lucha contra enemigos y descubre los secretos de Hyrule.",
+    "price": 59.99,
+    "imageUrl": "https://images.unsplash.com/photo-1578303512597-81e6cc155b3e?w=400",
+    "platform": ["Nintendo Switch", "Wii U"],
+    "tags": ["Aventura", "Acción", "Mundo abierto"],
+    "rating": 97
+  },
+  {
+    "id": "2",
+    "title": "Elden Ring",
+    "description": "Un épico juego de rol de acción del creador de Dark Souls y George R.R. Martin. Explora un vasto mundo interconectado lleno de peligros y descubrimientos.",
+    "price": 69.99,
+    "imageUrl": "https://images.unsplash.com/photo-1552820728-8b83bb6b773f?w=400",
+    "platform": ["PC", "PS5", "Xbox Series X", "PS4", "Xbox One"],
+    "tags": ["RPG", "Acción", "Souls-like"],
+    "rating": 96
+  },
+  {
+    "id": "3",
+    "title": "God of War Ragnarök",
+    "description": "Kratos y Atreus enfrentan el Ragnarök en esta secuela épica. Una historia conmovedora con combate visceral y gráficos impresionantes.",
+    "price": 69.99,
+    "imageUrl": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400",
+    "platform": ["PS5", "PS4"],
+    "tags": ["Acción", "Aventura", "Mitología"],
+    "rating": 94
+  },
+  {
+    "id": "4",
+    "title": "Cyberpunk 2077",
+    "description": "Vive en Night City, una megalópolis obsesionada con el poder, el glamour y la modificación corporal. Juega como V, un mercenario que busca un implante único.",
+    "price": 49.99,
+    "imageUrl": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=400",
+    "platform": ["PC", "PS5", "Xbox Series X", "PS4", "Xbox One"],
+    "tags": ["RPG", "Ciencia ficción", "Mundo abierto"],
+    "rating": 86
+  },
+  {
+    "id": "5",
+    "title": "Red Dead Redemption 2",
+    "description": "Una épica historia del salvaje oeste americano. Sigue a Arthur Morgan y la banda de Van der Linde en su lucha por sobrevivir en un mundo cambiante.",
+    "price": 39.99,
+    "imageUrl": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=400",
+    "platform": ["PC", "PS4", "Xbox One", "Stadia"],
+    "tags": ["Aventura", "Acción", "Mundo abierto"],
+    "rating": 97
+  },
+  {
+    "id": "6",
+    "title": "Minecraft",
+    "description": "Construye, explora y sobrevive en un mundo de bloques infinito. Desde humildes inicios hasta majestuosas construcciones, todo es posible en Minecraft.",
+    "price": 26.95,
+    "imageUrl": "https://images.unsplash.com/photo-1614680376573-df3480f0c6ff?w=400",
+    "platform": ["Multiplataforma"],
+    "tags": ["Sandbox", "Supervivencia", "Construcción"],
+    "rating": 93
+  },
+  {
+    "id": "7",
+    "title": "The Witcher 3: Wild Hunt",
+    "description": "Juega como Geralt de Rivia, un cazador de monstruos en busca de su hija adoptiva. Un RPG masivo con una narrativa excepcional.",
+    "price": 39.99,
+    "imageUrl": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=400",
+    "platform": ["PC", "PS5", "Xbox Series X", "PS4", "Xbox One", "Nintendo Switch"],
+    "tags": ["RPG", "Aventura", "Fantasía"],
+    "rating": 92
+  },
+  {
+    "id": "8",
+    "title": "Horizon Forbidden West",
+    "description": "Únete a Aloy en su viaje al Oeste Prohibido, una tierra majestuosa pero peligrosa llena de máquinas y misterios antiguos.",
+    "price": 69.99,
+    "imageUrl": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=400",
+    "platform": ["PS5", "PS4"],
+    "tags": ["Acción", "Aventura", "Mundo abierto"],
+    "rating": 88
+  }
+]

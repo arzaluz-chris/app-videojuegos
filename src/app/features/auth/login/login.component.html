@@ -1,0 +1,54 @@
+<div class="auth-container">
+  <div class="auth-card">
+    <h1>Iniciar Sesión</h1>
+    <p class="subtitle">Bienvenido de vuelta a Tienda Juegos</p>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <!-- Email -->
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          formControlName="email"
+          placeholder="tu@email.com"
+          [class.error]="hasError('email', 'email') || hasError('email', 'required')"
+        />
+        <span class="error-message" *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.invalid">
+          {{ getErrorMessage('email') }}
+        </span>
+      </div>
+
+      <!-- Password -->
+      <div class="form-group">
+        <label for="password">Contraseña</label>
+        <input
+          type="password"
+          id="password"
+          formControlName="password"
+          placeholder="••••••••"
+          [class.error]="hasError('password', 'minlength') || hasError('password', 'required')"
+        />
+        <span class="error-message" *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid">
+          {{ getErrorMessage('password') }}
+        </span>
+      </div>
+
+      <!-- Error general -->
+      <div class="alert alert-error" *ngIf="errorMessage">
+        {{ errorMessage }}
+      </div>
+
+      <!-- Botón de submit -->
+      <button type="submit" class="btn btn-primary" [disabled]="isLoading">
+        <span *ngIf="!isLoading">Iniciar Sesión</span>
+        <span *ngIf="isLoading">Iniciando sesión...</span>
+      </button>
+    </form>
+
+    <!-- Link a registro -->
+    <div class="auth-footer">
+      <p>¿No tienes cuenta? <a routerLink="/register">Regístrate aquí</a></p>
+    </div>
+  </div>
+</div>

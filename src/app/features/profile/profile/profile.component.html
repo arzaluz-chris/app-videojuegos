@@ -1,0 +1,61 @@
+<div class="profile-container">
+  <div class="profile-card" *ngIf="user">
+    <!-- Avatar Section -->
+    <div class="profile-header">
+      <div class="avatar" [style.background]="getAvatarColor()">
+        <span class="avatar-initials">{{ getUserInitials() }}</span>
+      </div>
+      <h1>{{ user.name }}</h1>
+      <p class="user-email">{{ user.email }}</p>
+    </div>
+
+    <!-- User Info -->
+    <div class="profile-info">
+      <h2>Información del Perfil</h2>
+
+      <div class="info-row">
+        <span class="info-label">Nombre:</span>
+        <span class="info-value">{{ user.name }}</span>
+      </div>
+
+      <div class="info-row">
+        <span class="info-label">Email:</span>
+        <span class="info-value">{{ user.email }}</span>
+      </div>
+
+      <div class="info-row">
+        <span class="info-label">ID de Usuario:</span>
+        <span class="info-value">{{ user.id }}</span>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="profile-actions">
+      <a routerLink="/games" class="btn btn-secondary">
+        Ver Catálogo de Juegos
+      </a>
+
+      <a routerLink="/games/add" class="btn btn-primary">
+        Agregar Nuevo Juego
+      </a>
+
+      <button (click)="logout()" class="btn btn-danger">
+        Cerrar Sesión
+      </button>
+    </div>
+
+    <!-- Info adicional -->
+    <div class="profile-footer">
+      <p class="note">
+        Esta es una aplicación de demostración. Los datos se almacenan localmente en tu navegador.
+      </p>
+    </div>
+  </div>
+
+  <!-- Loading state -->
+  <div class="profile-card" *ngIf="!user && isLoading">
+    <div class="loading-state">
+      <p>Cargando perfil...</p>
+    </div>
+  </div>
+</div>
