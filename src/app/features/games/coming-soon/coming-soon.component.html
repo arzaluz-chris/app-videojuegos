@@ -1,0 +1,12 @@
+<app-menu></app-menu>
+
+<div class="page-container">
+  <h1 class="page-title">Próximamente</h1>
+
+  <div class="games-grid">
+    <app-game-card
+      *ngFor="let game of games$ | async"
+      [game]="game">
+    </app-game-card>
+  </div>
+</div>

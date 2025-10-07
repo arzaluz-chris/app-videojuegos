@@ -73,10 +73,21 @@ export class RegisterComponent {
       next: (success) => {
         this.isLoading = false;
         if (success) {
-          this.successMessage = 'Registro exitoso. Redirigiendo al login...';
-          setTimeout(() => {
-            this.router.navigate(['/login']);
-          }, 2000);
+          this.successMessage = 'Registro exitoso. Iniciando sesión...';
+          // Hacer login automático después del registro
+          const credentials = {
+            email: formValue.email,
+            password: formValue.password
+          };
+          this.authService.login(credentials).subscribe({
+            next: (loginSuccess) => {
+              if (loginSuccess) {
+                setTimeout(() => {
+                  this.router.navigate(['/games/most-popular']);
+                }, 1500);
+              }
+            }
+          });
         } else {
           this.errorMessage = 'El email ya está registrado. Intenta con otro email.';
         }

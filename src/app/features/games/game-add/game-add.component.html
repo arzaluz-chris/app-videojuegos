@@ -1,3 +1,5 @@
+<app-menu></app-menu>
+
 <div class="add-game-container">
   <div class="add-game-card">
     <div class="card-header">
@@ -36,20 +38,20 @@
         </span>
       </div>
 
-      <!-- Precio -->
+      <!-- Fecha de lanzamiento -->
       <div class="form-group">
-        <label for="price">Precio (USD) *</label>
+        <label for="releaseDate">Fecha de lanzamiento *</label>
         <input
-          type="number"
-          id="price"
-          formControlName="price"
-          placeholder="59.99"
-          step="0.01"
-          [class.error]="gameForm.get('price')?.touched && gameForm.get('price')?.invalid"
+          type="text"
+          id="releaseDate"
+          formControlName="releaseDate"
+          placeholder="Ej: 15/marzo/2024"
+          [class.error]="gameForm.get('releaseDate')?.touched && gameForm.get('releaseDate')?.invalid"
         />
-        <span class="error-message" *ngIf="gameForm.get('price')?.touched && gameForm.get('price')?.invalid">
-          {{ getErrorMessage('price') }}
+        <span class="error-message" *ngIf="gameForm.get('releaseDate')?.touched && gameForm.get('releaseDate')?.invalid">
+          {{ getErrorMessage('releaseDate') }}
         </span>
+        <span class="help-text">Formato sugerido: dd/mes/aaaa</span>
       </div>
 
       <!-- URL de Imagen -->
@@ -68,50 +70,52 @@
         <span class="help-text">Ingresa una URL válida de imagen</span>
       </div>
 
-      <!-- Plataformas -->
-      <div class="form-group">
-        <label for="platform">Plataformas *</label>
-        <input
-          type="text"
-          id="platform"
-          formControlName="platform"
-          placeholder="PS5, Xbox Series X, PC"
-          [class.error]="gameForm.get('platform')?.touched && gameForm.get('platform')?.invalid"
-        />
-        <span class="error-message" *ngIf="gameForm.get('platform')?.touched && gameForm.get('platform')?.invalid">
-          {{ getErrorMessage('platform') }}
-        </span>
-        <span class="help-text">Separa las plataformas por comas</span>
-      </div>
-
-      <!-- Tags -->
-      <div class="form-group">
-        <label for="tags">Etiquetas</label>
-        <input
-          type="text"
-          id="tags"
-          formControlName="tags"
-          placeholder="Aventura, Acción, RPG"
-        />
-        <span class="help-text">Separa las etiquetas por comas (opcional)</span>
-      </div>
-
       <!-- Rating -->
       <div class="form-group">
-        <label for="rating">Puntuación (0-100)</label>
+        <label for="rating">Clasificación (0-5) *</label>
         <input
           type="number"
           id="rating"
           formControlName="rating"
-          placeholder="95"
+          placeholder="4.5"
           min="0"
-          max="100"
+          max="5"
+          step="0.1"
           [class.error]="gameForm.get('rating')?.touched && gameForm.get('rating')?.invalid"
         />
         <span class="error-message" *ngIf="gameForm.get('rating')?.touched && gameForm.get('rating')?.invalid">
           {{ getErrorMessage('rating') }}
         </span>
-        <span class="help-text">Opcional - calificación del 0 al 100</span>
+        <span class="help-text">Calificación de 0 a 5 estrellas</span>
+      </div>
+
+      <!-- Downloads -->
+      <div class="form-group">
+        <label for="downloads">Número de descargas *</label>
+        <input
+          type="number"
+          id="downloads"
+          formControlName="downloads"
+          placeholder="1000"
+          min="0"
+          [class.error]="gameForm.get('downloads')?.touched && gameForm.get('downloads')?.invalid"
+        />
+        <span class="error-message" *ngIf="gameForm.get('downloads')?.touched && gameForm.get('downloads')?.invalid">
+          {{ getErrorMessage('downloads') }}
+        </span>
+        <span class="help-text">Cantidad total de descargas</span>
+      </div>
+
+      <!-- Coming Soon -->
+      <div class="form-group checkbox-group">
+        <label class="checkbox-label">
+          <input
+            type="checkbox"
+            formControlName="comingSoon"
+          />
+          <span>Marcar como "Próximamente"</span>
+        </label>
+        <span class="help-text">Si está activado, el juego aparecerá en la sección "Próximamente"</span>
       </div>
 
       <!-- Mensajes de estado -->
@@ -125,7 +129,7 @@
 
       <!-- Botones -->
       <div class="form-actions">
-        <button type="button" class="btn btn-secondary" routerLink="/games">
+        <button type="button" class="btn btn-secondary" routerLink="/games/most-popular">
           Cancelar
         </button>
         <button type="submit" class="btn btn-primary" [disabled]="isLoading">

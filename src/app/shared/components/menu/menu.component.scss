@@ -1,0 +1,66 @@
+.menu {
+  background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+
+  &__brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  &__logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+
+  &__title {
+    color: white;
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  &__items {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 24px;
+    flex: 1;
+
+    li {
+      a {
+        color: #cbd5e0;
+        text-decoration: none;
+        font-weight: 500;
+        padding: 8px 16px;
+        border-radius: 4px;
+        transition: all 0.2s;
+        cursor: pointer;
+
+        &:hover {
+          color: white;
+          background: rgba(255, 255, 255, 0.1);
+        }
+
+        &.active {
+          color: white;
+          background: rgba(255, 255, 255, 0.15);
+        }
+
+        &.logout {
+          background: #e53e3e;
+          color: white;
+
+          &:hover {
+            background: #c53030;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,11 +1,11 @@
 // game.model.ts - Modelo de Videojuego (MVVM)
 export interface Game {
-  id: string;
+  id?: string;
   title: string;
-  description?: string;
-  price?: number;
-  imageUrl?: string;
-  platform?: string[];
-  tags?: string[];
-  rating?: number;
+  description: string;
+  releaseDate: string;
+  imageUrl: string;
+  rating: number; // 0-5
+  downloads: number;
+  comingSoon: boolean;
 }

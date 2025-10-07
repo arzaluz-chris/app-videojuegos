@@ -53,63 +53,83 @@ export class GamesService {
     const defaultGames: Game[] = [
       {
         id: '1',
-        title: 'The Legend of Zelda: Breath of the Wild',
-        description: 'Explora un vasto mundo abierto en esta aventura épica',
-        price: 59.99,
-        imageUrl: 'https://images.unsplash.com/photo-1578303512597-81e6cc155b3e?w=400',
-        platform: ['Nintendo Switch', 'Wii U'],
-        tags: ['Aventura', 'Acción', 'Mundo abierto'],
-        rating: 97
+        title: 'The Soccer 2020',
+        description: 'Es un videojuego de fútbol desarrollado por FreeDev, está próximo a ser lanzado para las plataformas más populares de videojuegos. Actualmente se encuentra una versión de demo donde los usuarios pueden probar el videojuego aunque tiene funciones limitadas por el momento.',
+        releaseDate: '29/octubre/2020',
+        imageUrl: 'https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=400',
+        rating: 4.5,
+        downloads: 150,
+        comingSoon: true
       },
       {
         id: '2',
-        title: 'Elden Ring',
-        description: 'Un épico juego de rol de acción del creador de Dark Souls',
-        price: 69.99,
-        imageUrl: 'https://images.unsplash.com/photo-1552820728-8b83bb6b773f?w=400',
-        platform: ['PC', 'PS5', 'Xbox Series X'],
-        tags: ['RPG', 'Acción', 'Souls-like'],
-        rating: 96
+        title: 'Racing Champions',
+        description: 'Juego de carreras de alta velocidad con gráficos realistas y competencia multijugador.',
+        releaseDate: '15/marzo/2021',
+        imageUrl: 'https://images.unsplash.com/photo-1511882150382-421056c89033?w=400',
+        rating: 4.2,
+        downloads: 200,
+        comingSoon: false
       },
       {
         id: '3',
-        title: 'God of War Ragnarök',
-        description: 'Kratos y Atreus enfrentan el Ragnarök en esta secuela épica',
-        price: 69.99,
-        imageUrl: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400',
-        platform: ['PS5', 'PS4'],
-        tags: ['Acción', 'Aventura', 'Mitología'],
-        rating: 94
+        title: 'Adventure Quest',
+        description: 'Explora mundos fantásticos y resuelve enigmas en esta aventura épica.',
+        releaseDate: '10/enero/2022',
+        imageUrl: 'https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=400',
+        rating: 4.8,
+        downloads: 350,
+        comingSoon: false
       },
       {
         id: '4',
-        title: 'Cyberpunk 2077',
-        description: 'Vive en Night City, una megalópolis obsesionada con el poder',
-        price: 49.99,
-        imageUrl: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=400',
-        platform: ['PC', 'PS5', 'Xbox Series X'],
-        tags: ['RPG', 'Ciencia ficción', 'Mundo abierto'],
-        rating: 86
+        title: 'Space Warriors',
+        description: 'Combate espacial intenso con misiones estratégicas y batallas masivas.',
+        releaseDate: '05/julio/2023',
+        imageUrl: 'https://images.unsplash.com/photo-1614732414444-096e5f1122d5?w=400',
+        rating: 4.6,
+        downloads: 280,
+        comingSoon: false
       },
       {
         id: '5',
-        title: 'Red Dead Redemption 2',
-        description: 'Una épica historia del salvaje oeste americano',
-        price: 39.99,
-        imageUrl: 'https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=400',
-        platform: ['PC', 'PS4', 'Xbox One'],
-        tags: ['Aventura', 'Acción', 'Mundo abierto'],
-        rating: 97
+        title: 'Fantasy Kingdom',
+        description: 'Construye tu reino y conquista territorios en este juego de estrategia medieval.',
+        releaseDate: '20/septiembre/2023',
+        imageUrl: 'https://images.unsplash.com/photo-1552820728-8b83bb6b773f?w=400',
+        rating: 4.3,
+        downloads: 120,
+        comingSoon: false
       },
       {
         id: '6',
-        title: 'Minecraft',
-        description: 'Construye, explora y sobrevive en un mundo de bloques infinito',
-        price: 26.95,
-        imageUrl: 'https://images.unsplash.com/photo-1614680376573-df3480f0c6ff?w=400',
-        platform: ['Multiplataforma'],
-        tags: ['Sandbox', 'Supervivencia', 'Construcción'],
-        rating: 93
+        title: 'Battle Royale X',
+        description: 'Sobrevive en un mundo hostil lleno de enemigos en este battle royale.',
+        releaseDate: '01/noviembre/2024',
+        imageUrl: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=400',
+        rating: 4.1,
+        downloads: 90,
+        comingSoon: false
+      },
+      {
+        id: '7',
+        title: 'Zombie Apocalypse',
+        description: 'Lucha por tu supervivencia en un mundo infestado de zombies.',
+        releaseDate: '12/diciembre/2024',
+        imageUrl: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400',
+        rating: 4.7,
+        downloads: 420,
+        comingSoon: false
+      },
+      {
+        id: '8',
+        title: 'Dragon Legends',
+        description: 'Conviértete en un maestro de dragones y conquista el reino.',
+        releaseDate: '30/junio/2025',
+        imageUrl: 'https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=400',
+        rating: 3.9,
+        downloads: 75,
+        comingSoon: true
       }
     ];
 
@@ -171,6 +191,36 @@ export class GamesService {
     const games = this.games$.value;
     const game = games.find(g => g.id === id);
     return of(game);
+  }
+
+  /**
+   * Obtener juegos más populares (rating > 4)
+   * @returns Observable<Game[]>
+   */
+  getMostPopular(): Observable<Game[]> {
+    const games = this.games$.value;
+    const popular = games.filter(game => game.rating > 4 && !game.comingSoon);
+    return of(popular);
+  }
+
+  /**
+   * Obtener juegos más descargados (downloads > 100)
+   * @returns Observable<Game[]>
+   */
+  getMostDownloaded(): Observable<Game[]> {
+    const games = this.games$.value;
+    const downloaded = games.filter(game => game.downloads > 100 && !game.comingSoon);
+    return of(downloaded);
+  }
+
+  /**
+   * Obtener juegos próximamente (comingSoon === true)
+   * @returns Observable<Game[]>
+   */
+  getComingSoon(): Observable<Game[]> {
+    const games = this.games$.value;
+    const upcoming = games.filter(game => game.comingSoon === true);
+    return of(upcoming);
   }
 
   /**

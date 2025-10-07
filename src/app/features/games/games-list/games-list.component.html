@@ -41,43 +41,32 @@
           [alt]="game.title"
           loading="lazy"
         />
-        <div class="rating-badge" [ngClass]="getRatingClass(game.rating)">
-          {{ game.rating || 'N/A' }}
-        </div>
       </div>
 
       <div class="game-content">
         <h3 class="game-title">{{ game.title }}</h3>
 
+        <p class="game-release-date">
+          <strong>Fecha de lanzamiento:</strong> {{ game.releaseDate }}
+        </p>
+
         <p class="game-description" *ngIf="game.description">
           {{ game.description }}
         </p>
 
-        <!-- Platforms -->
-        <div class="game-platforms" *ngIf="game.platform && game.platform.length > 0">
-          <span
-            *ngFor="let platform of game.platform.slice(0, 3)"
-            class="platform-badge"
-          >
-            {{ platform }}
-          </span>
+        <!-- Clasificación (Rating) -->
+        <div class="game-rating">
+          <strong>Clasificación:</strong>
+          <div class="stars">
+            <span *ngFor="let star of getRatingStars(game)" class="star" [class.filled]="star === 1">★</span>
+            <span class="rating-number">({{ game.rating }}/5)</span>
+          </div>
         </div>
 
-        <!-- Tags -->
-        <div class="game-tags" *ngIf="game.tags && game.tags.length > 0">
-          <span
-            *ngFor="let tag of game.tags.slice(0, 3)"
-            class="tag-badge"
-          >
-            {{ tag }}
-          </span>
-        </div>
-
-        <!-- Footer: precio y botón -->
+        <!-- Footer: botón -->
         <div class="game-footer">
-          <span class="game-price">{{ formatPrice(game.price) }}</span>
           <button class="btn btn-secondary">
-            Ver detalles
+            Agregar al carrito
           </button>
         </div>
       </div>

@@ -46,7 +46,7 @@ export class LoginComponent {
         this.isLoading = false;
         if (success) {
           console.log('Login exitoso');
-          this.router.navigate(['/games']);
+          this.router.navigate(['/games/most-popular']);
         } else {
           this.errorMessage = 'Credenciales inválidas. Verifica tu email y contraseña.';
         }

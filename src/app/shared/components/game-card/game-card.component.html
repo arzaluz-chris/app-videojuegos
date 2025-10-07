@@ -1,0 +1,31 @@
+<div class="game-card">
+  <div class="game-card__image">
+    <img [src]="game.imageUrl || 'https://via.placeholder.com/400x300?text=No+Image'" [alt]="game.title">
+  </div>
+
+  <div class="game-card__content">
+    <h3 class="game-card__title">{{ game.title }}</h3>
+
+    <p class="game-card__release-date">
+      <strong>Fecha de lanzamiento:</strong> {{ game.releaseDate }}
+    </p>
+
+    <p class="game-card__description">
+      <strong>Descripción:</strong> {{ game.description }}
+    </p>
+
+    <!-- Clasificación (Rating) -->
+    <div class="game-card__rating">
+      <strong>Clasificación:</strong>
+      <div class="stars">
+        <span *ngFor="let star of getRatingStars()" class="star" [class.filled]="star === 1">★</span>
+        <span class="rating-number">({{ game.rating }}/5)</span>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="game-card__footer">
+      <button class="game-card__button">Agregar al carrito</button>
+    </div>
+  </div>
+</div>

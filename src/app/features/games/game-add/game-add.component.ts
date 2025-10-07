@@ -4,11 +4,12 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 import { Router, RouterLink } from '@angular/router';
 import { GamesService } from '../../../core/services/games.service';
 import { Game } from '../../../shared/models/game.model';
+import { MenuComponent } from '../../../shared/components/menu/menu.component';
 
 @Component({
   selector: 'app-game-add',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterLink],
+  imports: [CommonModule, ReactiveFormsModule, RouterLink, MenuComponent],
   templateUrl: './game-add.component.html',
   styleUrl: './game-add.component.scss'
 })
@@ -26,11 +27,11 @@ export class GameAddComponent {
     this.gameForm = this.fb.group({
       title: ['', [Validators.required, Validators.minLength(3)]],
       description: ['', [Validators.required, Validators.minLength(10)]],
-      price: ['', [Validators.required, Validators.min(0)]],
+      releaseDate: ['', [Validators.required]],
       imageUrl: ['', [Validators.required, Validators.pattern(/^https?:\/\/.+/)]],
-      platform: ['', Validators.required],
-      tags: [''],
-      rating: ['', [Validators.min(0), Validators.max(100)]]
+      rating: [0, [Validators.required, Validators.min(0), Validators.max(5)]],
+      downloads: [0, [Validators.required, Validators.min(0)]],
+      comingSoon: [false]
     });
   }
 
@@ -49,25 +50,14 @@ export class GameAddComponent {
 
     const formValue = this.gameForm.value;
 
-    // Convertir strings separados por comas en arrays
-    const platforms = formValue.platform
-      .split(',')
-      .map((p: string) => p.trim())
-      .filter((p: string) => p.length > 0);
-
-    const tags = formValue.tags
-      ? formValue.tags.split(',').map((t: string) => t.trim()).filter((t: string) => t.length > 0)
-      : [];
-
     const newGame: Game = {
-      id: '', // Se generará automáticamente
       title: formValue.title,
       description: formValue.description,
-      price: parseFloat(formValue.price),
+      releaseDate: formValue.releaseDate,
       imageUrl: formValue.imageUrl,
-      platform: platforms,
-      tags: tags,
-      rating: formValue.rating ? parseFloat(formValue.rating) : undefined
+      rating: parseFloat(formValue.rating),
+      downloads: parseInt(formValue.downloads, 10),
+      comingSoon: formValue.comingSoon
     };
 
     try {
@@ -76,7 +66,7 @@ export class GameAddComponent {
       this.isLoading = false;
 
       setTimeout(() => {
-        this.router.navigate(['/games']);
+        this.router.navigate(['/games/most-popular']);
       }, 1500);
     } catch (error) {
       this.isLoading = false;

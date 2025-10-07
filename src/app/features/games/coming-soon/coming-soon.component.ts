@@ -1,0 +1,24 @@
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Observable } from 'rxjs';
+import { Game } from '../../../shared/models/game.model';
+import { GamesService } from '../../../core/services/games.service';
+import { GameCardComponent } from '../../../shared/components/game-card/game-card.component';
+import { MenuComponent } from '../../../shared/components/menu/menu.component';
+
+@Component({
+  selector: 'app-coming-soon',
+  standalone: true,
+  imports: [CommonModule, GameCardComponent, MenuComponent],
+  templateUrl: './coming-soon.component.html',
+  styleUrl: './coming-soon.component.scss'
+})
+export class ComingSoonComponent implements OnInit {
+  games$!: Observable<Game[]>;
+
+  constructor(private gamesService: GamesService) {}
+
+  ngOnInit(): void {
+    this.games$ = this.gamesService.getComingSoon();
+  }
+}

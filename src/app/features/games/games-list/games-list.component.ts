@@ -29,28 +29,17 @@ export class GamesListComponent implements OnInit {
   }
 
   /**
-   * Obtener badge de color según el rating
+   * Generar array de estrellas basado en rating (0-5)
    */
-  getRatingClass(rating?: number): string {
-    if (!rating) return 'rating-default';
-    if (rating >= 90) return 'rating-excellent';
-    if (rating >= 80) return 'rating-good';
-    if (rating >= 70) return 'rating-average';
-    return 'rating-low';
-  }
-
-  /**
-   * Formatear precio en formato de moneda
-   */
-  formatPrice(price?: number): string {
-    if (!price) return 'Gratis';
-    return `$${price.toFixed(2)}`;
+  getRatingStars(game: Game): number[] {
+    const rating = Math.round(game.rating);
+    return Array(5).fill(0).map((_, i) => i < rating ? 1 : 0);
   }
 
   /**
    * Trackby function para mejorar performance del ngFor
    */
-  trackByGameId(index: number, game: Game): string {
+  trackByGameId(index: number, game: Game): string | undefined {
     return game.id;
   }
 }

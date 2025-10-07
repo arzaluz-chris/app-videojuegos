@@ -1,0 +1,24 @@
+<nav class="menu">
+  <div class="menu__brand">
+    <img src="https://via.placeholder.com/50" alt="XGames" class="menu__logo">
+    <span class="menu__title">XGames</span>
+  </div>
+
+  <ul class="menu__items">
+    <li>
+      <a routerLink="/games/most-popular" routerLinkActive="active">Más populares</a>
+    </li>
+    <li>
+      <a routerLink="/games/most-downloaded" routerLinkActive="active">Más descargados</a>
+    </li>
+    <li>
+      <a routerLink="/games/coming-soon" routerLinkActive="active">Próximamente</a>
+    </li>
+    <li>
+      <a routerLink="/games/add" routerLinkActive="active">Agregar</a>
+    </li>
+    <li>
+      <a (click)="onLogout()" class="logout">Salir</a>
+    </li>
+  </ul>
+</nav>
