@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { NavbarComponent } from './shared/navbar/navbar.component';
+import { MenuComponent } from './shared/components/menu/menu.component'; // Asegúrate que la ruta sea correcta
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, NavbarComponent],
+  standalone: true,
+  imports: [RouterOutlet, MenuComponent], // Agrega MenuComponent aquí
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
